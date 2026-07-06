@@ -1,0 +1,261 @@
+{
+ "actions": [],
+ "creation": "2026-06-11 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enabled",
+  "provider_section",
+  "provider",
+  "claude_section",
+  "api_key",
+  "model",
+  "openai_section",
+  "openai_api_key",
+  "openai_model",
+  "api_section",
+  "custom_model",
+  "column_break_api",
+  "max_tokens",
+  "max_tool_iterations",
+  "default_row_limit",
+  "query_timeout",
+  "access_section",
+  "allowed_users",
+  "db_section",
+  "db_user_created",
+  "readonly_db_user",
+  "readonly_db_password",
+  "column_break_db",
+  "db_user_created_on",
+  "db_user_mode",
+  "status_section",
+  "connection_status",
+  "last_test_on",
+  "column_break_status",
+  "total_input_tokens",
+  "total_output_tokens",
+  "monthly_token_budget"
+ ],
+ "fields": [
+  {
+   "default": "0",
+   "fieldname": "enabled",
+   "fieldtype": "Check",
+   "label": "Enabled"
+  },
+  {
+   "fieldname": "provider_section",
+   "fieldtype": "Section Break",
+   "label": "AI Provider"
+  },
+  {
+   "default": "Claude",
+   "description": "Which AI service answers chat questions. Enter the credentials for the selected provider below.",
+   "fieldname": "provider",
+   "fieldtype": "Select",
+   "label": "Provider",
+   "options": "Claude\nChatGPT",
+   "reqd": 1
+  },
+  {
+   "depends_on": "eval:doc.provider=='Claude'",
+   "fieldname": "claude_section",
+   "fieldtype": "Section Break",
+   "label": "Claude (Anthropic) API"
+  },
+  {
+   "fieldname": "api_key",
+   "fieldtype": "Password",
+   "label": "Anthropic API Key",
+   "mandatory_depends_on": "eval:doc.enabled && doc.provider=='Claude'"
+  },
+  {
+   "default": "claude-sonnet-4-6",
+   "fieldname": "model",
+   "fieldtype": "Select",
+   "label": "Claude Model",
+   "options": "claude-sonnet-4-6\nclaude-haiku-4-5-20251001\nclaude-opus-4-8"
+  },
+  {
+   "depends_on": "eval:doc.provider=='ChatGPT'",
+   "fieldname": "openai_section",
+   "fieldtype": "Section Break",
+   "label": "ChatGPT (OpenAI) API"
+  },
+  {
+   "fieldname": "openai_api_key",
+   "fieldtype": "Password",
+   "label": "OpenAI API Key",
+   "mandatory_depends_on": "eval:doc.enabled && doc.provider=='ChatGPT'"
+  },
+  {
+   "default": "gpt-4o",
+   "fieldname": "openai_model",
+   "fieldtype": "Select",
+   "label": "ChatGPT Model",
+   "options": "gpt-4o\ngpt-4o-mini\ngpt-4.1\ngpt-4.1-mini\ngpt-5\ngpt-5-mini"
+  },
+  {
+   "fieldname": "api_section",
+   "fieldtype": "Section Break",
+   "label": "Common AI Settings"
+  },
+  {
+   "description": "Optional. If set, overrides the model selection of the active provider (e.g. a newer model name not in the list).",
+   "fieldname": "custom_model",
+   "fieldtype": "Data",
+   "label": "Custom Model"
+  },
+  {
+   "fieldname": "column_break_api",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "4096",
+   "fieldname": "max_tokens",
+   "fieldtype": "Int",
+   "label": "Max Tokens per Response"
+  },
+  {
+   "default": "8",
+   "description": "Maximum tool-use round trips per question",
+   "fieldname": "max_tool_iterations",
+   "fieldtype": "Int",
+   "label": "Max Tool Iterations"
+  },
+  {
+   "default": "100",
+   "description": "Enforced LIMIT on AI-generated queries",
+   "fieldname": "default_row_limit",
+   "fieldtype": "Int",
+   "label": "Default Row Limit"
+  },
+  {
+   "default": "15",
+   "description": "Seconds. Enforced via MAX_STATEMENT_TIME on the read-only session",
+   "fieldname": "query_timeout",
+   "fieldtype": "Int",
+   "label": "Query Timeout (s)"
+  },
+  {
+   "fieldname": "access_section",
+   "fieldtype": "Section Break",
+   "label": "User Access Control"
+  },
+  {
+   "description": "Users must also have the 'AI Chat User' role (Role Permission Manager). Access mode here sets their data scope.",
+   "fieldname": "allowed_users",
+   "fieldtype": "Table",
+   "label": "Allowed Users",
+   "options": "AI Access User"
+  },
+  {
+   "fieldname": "db_section",
+   "fieldtype": "Section Break",
+   "label": "Read-Only Database User"
+  },
+  {
+   "default": "0",
+   "fieldname": "db_user_created",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "DB User Created",
+   "read_only": 1
+  },
+  {
+   "fieldname": "readonly_db_user",
+   "fieldtype": "Data",
+   "label": "Read-Only DB User",
+   "read_only": 1
+  },
+  {
+   "fieldname": "readonly_db_password",
+   "fieldtype": "Password",
+   "hidden": 1,
+   "label": "Read-Only DB Password"
+  },
+  {
+   "fieldname": "column_break_db",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "db_user_created_on",
+   "fieldtype": "Datetime",
+   "label": "Created On",
+   "read_only": 1
+  },
+  {
+   "description": "How the read-only user was set up: Automatic (created from UI) or Manual (created on the DB server and pasted here)",
+   "fieldname": "db_user_mode",
+   "fieldtype": "Data",
+   "label": "Setup Mode",
+   "read_only": 1
+  },
+  {
+   "fieldname": "status_section",
+   "fieldtype": "Section Break",
+   "label": "Status & Tracking"
+  },
+  {
+   "fieldname": "connection_status",
+   "fieldtype": "Data",
+   "label": "Connection Status",
+   "read_only": 1
+  },
+  {
+   "fieldname": "last_test_on",
+   "fieldtype": "Datetime",
+   "label": "Last Test On",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_status",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "total_input_tokens",
+   "fieldtype": "Int",
+   "label": "Total Input Tokens",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "total_output_tokens",
+   "fieldtype": "Int",
+   "label": "Total Output Tokens",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "description": "Combined input+output tokens allowed per calendar month. 0 = unlimited.",
+   "fieldname": "monthly_token_budget",
+   "fieldtype": "Int",
+   "label": "Monthly Token Budget"
+  }
+ ],
+ "issingle": 1,
+ "links": [],
+ "modified": "2026-06-11 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "ERP AI Integration",
+ "name": "Claude AI Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

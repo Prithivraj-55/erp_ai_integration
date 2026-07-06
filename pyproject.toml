@@ -9,6 +9,9 @@ readme = "README.md"
 dynamic = ["version"]
 dependencies = [
     # "frappe~=15.0.0" # Installed and managed by bench.
+    "anthropic>=0.40.0",
+    "openai>=1.50.0",
+    "sqlparse>=0.4.4",
 ]
 
 [build-system]

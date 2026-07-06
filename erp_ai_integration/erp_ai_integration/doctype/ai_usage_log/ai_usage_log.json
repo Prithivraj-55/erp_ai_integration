@@ -1,0 +1,90 @@
+{
+ "actions": [],
+ "autoname": "hash",
+ "creation": "2026-06-11 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "user",
+  "chat",
+  "model",
+  "request_type",
+  "column_break_main",
+  "input_tokens",
+  "output_tokens",
+  "estimated_cost"
+ ],
+ "fields": [
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "User",
+   "options": "User",
+   "search_index": 1
+  },
+  {
+   "fieldname": "chat",
+   "fieldtype": "Link",
+   "label": "Chat",
+   "options": "AI Chat"
+  },
+  {
+   "fieldname": "model",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Model"
+  },
+  {
+   "default": "chat",
+   "fieldname": "request_type",
+   "fieldtype": "Data",
+   "label": "Request Type"
+  },
+  {
+   "fieldname": "column_break_main",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "input_tokens",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Input Tokens"
+  },
+  {
+   "default": "0",
+   "fieldname": "output_tokens",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Output Tokens"
+  },
+  {
+   "fieldname": "estimated_cost",
+   "fieldtype": "Float",
+   "label": "Estimated Cost (USD)",
+   "precision": "6"
+  }
+ ],
+ "in_create": 1,
+ "links": [],
+ "modified": "2026-06-11 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "ERP AI Integration",
+ "name": "AI Usage Log",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager"
+  }
+ ],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": []
+}

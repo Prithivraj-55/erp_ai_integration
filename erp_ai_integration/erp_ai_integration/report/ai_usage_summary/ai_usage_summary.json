@@ -1,0 +1,23 @@
+{
+ "add_total_row": 1,
+ "creation": "2026-07-06 00:00:00.000000",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "is_standard": "Yes",
+ "letter_head": null,
+ "modified": "2026-07-06 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "ERP AI Integration",
+ "name": "AI Usage Summary",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "ref_doctype": "AI Usage Log",
+ "report_name": "AI Usage Summary",
+ "report_type": "Script Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  }
+ ]
+}

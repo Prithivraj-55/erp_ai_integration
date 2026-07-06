@@ -83,7 +83,8 @@ app_license = "mit"
 # ------------
 
 # before_install = "erp_ai_integration.install.before_install"
-# after_install = "erp_ai_integration.install.after_install"
+after_install = "erp_ai_integration.install.after_install"
+after_migrate = "erp_ai_integration.install.after_migrate"
 
 # Uninstallation
 # ------------
@@ -117,13 +118,14 @@ app_license = "mit"
 # -----------
 # Permissions evaluated in scripted ways
 
-# permission_query_conditions = {
-# 	"Event": "frappe.desk.doctype.event.event.get_permission_query_conditions",
-# }
-#
-# has_permission = {
-# 	"Event": "frappe.desk.doctype.event.event.has_permission",
-# }
+permission_query_conditions = {
+	"AI Chat": "erp_ai_integration.erp_ai_integration.doctype.ai_chat.ai_chat.get_permission_query_conditions",
+	"AI Chat Message": "erp_ai_integration.erp_ai_integration.doctype.ai_chat_message.ai_chat_message.get_permission_query_conditions",
+}
+
+has_permission = {
+	"AI Chat": "erp_ai_integration.erp_ai_integration.doctype.ai_chat.ai_chat.has_permission",
+}
 
 # DocType Class
 # ---------------
