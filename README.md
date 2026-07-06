@@ -1,6 +1,6 @@
-### ERP AI Integration
+# ERP AI Integration
 
-AI chat assistant for Frappe/ERPNext - ask questions in natural language, answered by Claude via safe read-only SQL
+AI Assisted ERPnext development to integrate Claude and ChatGPT — ask questions in natural language, answered via safe read-only SQL over your ERPNext data.
 
 ### Installation
 
@@ -8,7 +8,7 @@ You can install this app using the [bench](https://github.com/frappe/bench) CLI:
 
 ```bash
 cd $PATH_TO_YOUR_BENCH
-bench get-app $URL_OF_THIS_REPO --branch develop
+bench get-app $URL_OF_THIS_REPO --branch master
 bench install-app erp_ai_integration
 ```
 
